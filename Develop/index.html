@@ -19,14 +19,16 @@
     <p class="lead">A simple calendar app for scheduling your work day</p>
     <p id="currentDay" class="lead"></p>
   </header>
+
   <div class="container">
+
     <div class="row">
       <div class="col-2 hour">9 AM</div>
       <div class="col-8 description">
         <input type="text"></input>
       </div>
       <div class="col-2 time-block">
-        <button type="submit" class="saveBtn">submit</button>
+        <button type="save" class="saveBtn">submit</button>
       </div>
     </div>
     <div class="row">
@@ -107,9 +109,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
   <script>
-    document.querySelector('.saveBtn').addEventListener('click', event => {
-      console.log('hi')
+    let workDay = {
+      "8 AM": "",
+      "9 AM": "",
+      "10 AM": "",
+      "11 AM": "",
+      "12 PM": "",
+      "1 PM": "",
+      "2 PM": "",
+      "3 PM": "",
+      "4 PM": "",
+      "5 PM": "",
+    };
+
+    $(document).ready(function () {
+      if (!localStorage.getItem('workday')) {
+    updateCalendartasks(workDay);
+      } else {
+        updateCalendartasks(JSON.parse(localStorage.geItem('workDay')));
+      }
     })
+
     
   </script>
 </body>
